@@ -1,0 +1,60 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js add @babylonjs/loaders/glTF
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/luo/anaconda3/bin:/Users/luo/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/luo/Projects/go/bin:/usr/local/mongodb/bin:/Users/luo/Projects/go/bin:/usr/local/mongodb/bin
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  12.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@babylonjs%2floaders/glTF: Request "https://registry.yarnpkg.com/@babylonjs%2floaders/glTF" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:66067:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:129541:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130513:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130435:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1183:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "games",
+    "version": "1.0.0",
+    "description": "games build by canvas",
+    "main": "index.js",
+    "scripts": {
+      "build": "webpack",
+      "start": "webpack-dev-server --port 8080"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@babylonjs/core": "^4.2.0",
+      "@babylonjs/inspector": "^4.2.0"
+    },
+    "devDependencies": {
+      "clean-webpack-plugin": "^3.0.0",
+      "html-webpack-plugin": "^4.5.2",
+      "ts-loader": "^8.0.18",
+      "typescript": "^4.2.3",
+      "webpack": "^4.43.0",
+      "webpack-cli": "^3.3.12",
+      "webpack-dev-server": "^3.11.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
