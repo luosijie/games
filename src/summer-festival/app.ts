@@ -332,10 +332,10 @@ class App {
 
     //goToGame
     private async _goToGame(): Promise<void> {
-        var finishedLoading = false;
-        await this._setUpGame().then(res =>{
-            finishedLoading = true;
-        });
+
+        this._engine.displayLoadingUI()
+        await this._setUpGame()
+        this._engine.hideLoadingUI()
         
         //--SETUP SCENE--
         this._scene.detachControl();
