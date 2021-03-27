@@ -12,15 +12,14 @@ const copyConfig = {
     patterns: []
 }
 const pages = fs.readdirSync('./src')
-console.log('pages:', pages)
 
 pages.forEach(page => {
     copyConfig.patterns.push({
         from: `src/${page}/public`,
-        to: `doc/${page}/public`
+        to: `${page}/public`
     })
 })
-console.log('copy-config:', copyConfig)
+
 plugins.push(new CopyWebpackPlugin(copyConfig))
 
 pages.forEach(page => {
