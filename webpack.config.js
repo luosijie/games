@@ -5,14 +5,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin =  require('copy-webpack-plugin')
 
 const entry = {}
-const plugins = [
-    new CleanWebpackPlugin()
-]
+const plugins = []
+
+if (process.env.NODE_ENV === 'production') {
+    plugins.push(new CleanWebpackPlugin())
+}
 const copyConfig = {
     patterns: []
 }
 const pages = fs.readdirSync('./src')
-
+console.log("NODE_ENV:", process.env.NODE_ENV)
 pages.forEach(page => {
     copyConfig.patterns.push({
         from: `src/${page}/public`,
@@ -60,5 +62,5 @@ module.exports = {
         ]
     },
     plugins,
-    mode: 'development'
+    mode: process.env.NODE_ENV
 }
