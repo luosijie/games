@@ -19,7 +19,7 @@ export class Environment {
 
         //create emissive material for when lantern is lit
         const lightmtl = new PBRMetallicRoughnessMaterial("lantern mesh light", this._scene);
-        lightmtl.emissiveTexture = new Texture("/textures/litLantern.png", this._scene, true, false);
+        lightmtl.emissiveTexture = new Texture("/public/textures/litLantern.png", this._scene, true, false);
         lightmtl.emissiveColor = new Color3(0.8784313725490196, 0.7568627450980392, 0.6235294117647059);
         this._lightmtl = lightmtl;
     }
@@ -99,13 +99,13 @@ export class Environment {
     //Load all necessary meshes for the environment
     public async _loadAsset() {
         //loads game environment
-        const result = await SceneLoader.ImportMeshAsync(null, "./models/", "envSetting.glb", this._scene);
+        const result = await SceneLoader.ImportMeshAsync(null, "./public/models/", "envSetting.glb", this._scene);
 
         let env = result.meshes[0];
         let allMeshes = env.getChildMeshes();
 
         //loads lantern mesh
-        const res = await SceneLoader.ImportMeshAsync("", "./models/", "lantern.glb", this._scene);
+        const res = await SceneLoader.ImportMeshAsync("", "./public/models/", "lantern.glb", this._scene);
 
         //extract the actual lantern mesh from the root of the mesh that's imported, dispose of the root
         let lantern = res.meshes[0].getChildren()[0];
@@ -194,7 +194,7 @@ class Firework {
 
         //Rocket particle system
         let rocket = new ParticleSystem("rocket", 350, scene);
-        rocket.particleTexture = new Texture("./textures/flare.png", scene);
+        rocket.particleTexture = new Texture("./public/textures/flare.png", scene);
         rocket.emitter = sphere;
         rocket.emitRate = 20;
         rocket.minEmitBox = new Vector3(0, 0, 0);
@@ -253,7 +253,7 @@ class Firework {
 
             //actual particle system for each exploding piece
             const particleSys = new ParticleSystem("particles", 500, this._scene);
-            particleSys.particleTexture = new Texture("textures/flare.png", this._scene);
+            particleSys.particleTexture = new Texture("public/textures/flare.png", this._scene);
             particleSys.emitter = gizmo;
             particleSys.minEmitBox = new Vector3(1, 0, 0);
             particleSys.maxEmitBox = new Vector3(1, 0, 0);
@@ -309,12 +309,12 @@ class Firework {
     }
 
     private _loadSounds(): void {
-        this._rocketSfx = new Sound("selection", "./sounds/fw_05.wav", this._scene, function () {
+        this._rocketSfx = new Sound("selection", "./public/sounds/fw_05.wav", this._scene, function () {
         }, {
             volume: 0.5,
         });
 
-        this._explosionSfx = new Sound("selection", "./sounds/fw_03.wav", this._scene, function () {
+        this._explosionSfx = new Sound("selection", "./public/sounds/fw_03.wav", this._scene, function () {
         }, {
             volume: 0.5,
         });

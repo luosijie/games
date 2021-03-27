@@ -100,7 +100,7 @@ export class Hud {
         this._clockTime = clockTime;
 
         //sparkler bar animation
-        const sparklerLife = new Image("sparkLife", "./sprites/sparkLife.png");
+        const sparklerLife = new Image("sparkLife", "./public/sprites/sparkLife.png");
         sparklerLife.width = "54px";
         sparklerLife.height = "162px";
         sparklerLife.cellId = 0;
@@ -115,7 +115,7 @@ export class Hud {
         playerUI.addControl(sparklerLife);
         this._sparklerLife = sparklerLife;
 
-        const spark = new Image("spark", "./sprites/spark.png");
+        const spark = new Image("spark", "./public/sprites/spark.png");
         spark.width = "40px";
         spark.height = "40px";
         spark.cellId = 0;
@@ -130,7 +130,7 @@ export class Hud {
         playerUI.addControl(spark);
         this._spark = spark;
 
-        const pauseBtn = Button.CreateImageOnlyButton("pauseBtn", "./sprites/pauseBtn.png");
+        const pauseBtn = Button.CreateImageOnlyButton("pauseBtn", "./public/sprites/pauseBtn.png");
         pauseBtn.width = "48px";
         pauseBtn.height = "86px";
         pauseBtn.thickness = 0;
@@ -168,7 +168,7 @@ export class Hud {
         this._playerUI.addControl(tutorial);
         this.tutorial = tutorial;
         //movement image, will disappear once you attempt all of the moves
-        let movementPC = new Image("pause", "sprites/tutorial.jpeg");
+        let movementPC = new Image("pause", "public/sprites/tutorial.jpeg");
         tutorial.addControl(movementPC);
 
         const hint = new Rectangle();
@@ -184,7 +184,7 @@ export class Hud {
         this._playerUI.addControl(hint);
         this.hint = hint;
         //hint to the first lantern, will disappear once you light it
-        const lanternHint = new Image("lantern1", "sprites/arrowBtn.png");
+        const lanternHint = new Image("lantern1", "public/sprites/arrowBtn.png");
         lanternHint.rotation = Math.PI / 2;
         lanternHint.stretch = Image.STRETCH_UNIFORM;
         lanternHint.height = 0.8;
@@ -209,7 +209,7 @@ export class Hud {
 
             //tutorial image
             movementPC.isVisible = false;
-            let movementMobile = new Image("pause", "sprites/tutorialMobile.jpeg");
+            let movementMobile = new Image("pause", "public/sprites/tutorialMobile.jpeg");
             tutorial.addControl(movementMobile);
             //--ACTION BUTTONS--
             // container for action buttons (right side of screen)
@@ -231,13 +231,13 @@ export class Hud {
             actionGrid.addRowDefinition(.5);
             actionContainer.addControl(actionGrid);
 
-            const dashBtn = Button.CreateImageOnlyButton("dash", "./sprites/aBtn.png");
+            const dashBtn = Button.CreateImageOnlyButton("dash", "./public/sprites/aBtn.png");
             dashBtn.thickness = 0;
             dashBtn.alpha = 0.8;
             dashBtn.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
             this.dashBtn = dashBtn;
 
-            const jumpBtn = Button.CreateImageOnlyButton("jump", "./sprites/bBtn.png");
+            const jumpBtn = Button.CreateImageOnlyButton("jump", "./public/sprites/bBtn.png");
             jumpBtn.thickness = 0;
             jumpBtn.alpha = 0.8;
             jumpBtn.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
@@ -267,7 +267,7 @@ export class Hud {
             grid.addRowDefinition(.5);
             moveContainer.addControl(grid);
 
-            const leftBtn = Button.CreateImageOnlyButton("left", "./sprites/arrowBtn.png");
+            const leftBtn = Button.CreateImageOnlyButton("left", "./public/sprites/arrowBtn.png");
             leftBtn.thickness = 0;
             leftBtn.rotation = -Math.PI / 2;
             leftBtn.color = "white";
@@ -276,7 +276,7 @@ export class Hud {
             leftBtn.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
             this.leftBtn = leftBtn;
 
-            const rightBtn = Button.CreateImageOnlyButton("right", "./sprites/arrowBtn.png");
+            const rightBtn = Button.CreateImageOnlyButton("right", "./public/sprites/arrowBtn.png");
             rightBtn.rotation = Math.PI / 2;
             rightBtn.thickness = 0;
             rightBtn.color = "white";
@@ -285,13 +285,13 @@ export class Hud {
             rightBtn.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
             this.rightBtn = rightBtn;
 
-            const upBtn = Button.CreateImageOnlyButton("up", "./sprites/arrowBtn.png");
+            const upBtn = Button.CreateImageOnlyButton("up", "./public/sprites/arrowBtn.png");
             upBtn.thickness = 0;
             upBtn.alpha = 0.8;
             upBtn.color = "white";
             this.upBtn = upBtn;
 
-            const downBtn = Button.CreateImageOnlyButton("down", "./sprites/arrowBtn.png");
+            const downBtn = Button.CreateImageOnlyButton("down", "./public/sprites/arrowBtn.png");
             downBtn.thickness = 0;
             downBtn.rotation = Math.PI;
             downBtn.color = "white";
@@ -422,7 +422,7 @@ export class Hud {
         pauseMenu.isVisible = false;
 
         //background image
-        const image = new Image("pause", "sprites/pause.jpeg");
+        const image = new Image("pause", "public/sprites/pause.jpeg");
         pauseMenu.addControl(image);
 
         //stack panel for the buttons
@@ -544,7 +544,7 @@ export class Hud {
         this._controls = controls;
 
         //background image
-        const image = new Image("controls", "sprites/controls.jpeg");
+        const image = new Image("controls", "public/sprites/controls.jpeg");
         controls.addControl(image);
 
         const title = new TextBlock("title", "CONTROLS");
@@ -555,7 +555,7 @@ export class Hud {
         title.top = "14px";
         controls.addControl(title);
 
-        const backBtn = Button.CreateImageOnlyButton("back", "./sprites/lanternbutton.jpeg");
+        const backBtn = Button.CreateImageOnlyButton("back", "./public/sprites/lanternbutton.jpeg");
         backBtn.width = "40px";
         backBtn.height = "40px";
         backBtn.top = "14px";
@@ -577,18 +577,18 @@ export class Hud {
 
     //load all sounds needed for game ui interactions
     private _loadSounds(scene: Scene): void {
-        this._pause = new Sound("pauseSong", "./sounds/Snowland.wav", scene, function () {
+        this._pause = new Sound("pauseSong", "./public/sounds/Snowland.wav", scene, function () {
         }, {
             volume: 0.2
         });
 
-        this._sfx = new Sound("selection", "./sounds/vgmenuselect.wav", scene, function () {
+        this._sfx = new Sound("selection", "./public/sounds/vgmenuselect.wav", scene, function () {
         });
 
-        this.quitSfx = new Sound("quit", "./sounds/Retro Event UI 13.wav", scene, function () {
+        this.quitSfx = new Sound("quit", "./public/sounds/Retro Event UI 13.wav", scene, function () {
         });
 
-        this._sparkWarningSfx = new Sound("sparkWarning", "./sounds/Retro Water Drop 01.wav", scene, function () {
+        this._sparkWarningSfx = new Sound("sparkWarning", "./public/sounds/Retro Water Drop 01.wav", scene, function () {
         }, {
             loop: true,
             volume: 0.5,

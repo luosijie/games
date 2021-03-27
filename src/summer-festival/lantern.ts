@@ -75,7 +75,7 @@ export class Lantern {
     private _loadStars(): void {
         const particleSystem = new ParticleSystem("stars", 1000, this._scene);
 
-        particleSystem.particleTexture = new Texture("textures/solidStar.png", this._scene);
+        particleSystem.particleTexture = new Texture("public/textures/solidStar.png", this._scene);
         particleSystem.emitter = new Vector3(this.mesh.position.x, this.mesh.position.y + 1.5, this.mesh.position.z);
         particleSystem.createPointEmitter(new Vector3(0.6, 1, 0), new Vector3(0, 1, 0));
         particleSystem.color1 = new Color4(1, 1, 1);

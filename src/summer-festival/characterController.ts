@@ -503,7 +503,7 @@ export class Player extends TransformNode {
         sphere.isVisible = false;
 
         let particleSystem = new ParticleSystem("sparkles", 1000, this.scene);
-        particleSystem.particleTexture = new Texture("textures/flwr.png", this.scene);
+        particleSystem.particleTexture = new Texture("public/textures/flwr.png", this.scene);
         particleSystem.emitter = sphere;
         particleSystem.particleEmitterType = new SphereParticleEmitter(0);
 
@@ -536,28 +536,28 @@ export class Player extends TransformNode {
 
     private _loadSounds(scene: Scene): void {
 
-        this.lightSfx = new Sound("light", "./sounds/Rise03.mp3", scene, function () {
+        this.lightSfx = new Sound("light", "./public/sounds/Rise03.mp3", scene, function () {
         });
 
-        this.sparkResetSfx = new Sound("sparkReset", "./sounds/Rise04.mp3", scene, function () {
+        this.sparkResetSfx = new Sound("sparkReset", "./public/sounds/Rise04.mp3", scene, function () {
         });
 
-        this._jumpingSfx = new Sound("jumping", "./sounds/187024__lloydevans09__jump2.wav", scene, function () {
+        this._jumpingSfx = new Sound("jumping", "./public/sounds/187024__lloydevans09__jump2.wav", scene, function () {
         }, {
             volume: 0.25
         });
 
-        this._dashingSfx = new Sound("dashing", "./sounds/194081__potentjello__woosh-noise-1.wav", scene, function () {
+        this._dashingSfx = new Sound("dashing", "./public/sounds/194081__potentjello__woosh-noise-1.wav", scene, function () {
         });
 
-        this._walkingSfx = new Sound("walking", "./sounds/Concrete 2.wav", scene, function () {
+        this._walkingSfx = new Sound("walking", "./public/sounds/Concrete 2.wav", scene, function () {
         }, {
             loop: true,
             volume: 0.20,
             playbackRate: 0.6
         });
 
-        this._resetSfx = new Sound("reset", "./sounds/Retro Magic Protection 25.wav", scene, function () {
+        this._resetSfx = new Sound("reset", "./public/sounds/Retro Magic Protection 25.wav", scene, function () {
         }, {
             volume: 0.25
         });

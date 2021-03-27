@@ -15,7 +15,7 @@ class App {
 
     constructor() {
         this._canvas = this._createCanvas();
-
+        console.log('ssssss')
         // 初始化 babylon 场景(scene) and 引擎(engin)
         this._init();
     }

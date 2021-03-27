@@ -144,13 +144,13 @@ class App {
         camera.setTarget(Vector3.Zero()); //targets the camera to scene origin
 
         //--SOUNDS--
-        const start = new Sound("startSong", "./sounds/copycat(revised).mp3", scene, function () {
+        const start = new Sound("startSong", "./public/sounds/copycat(revised).mp3", scene, function () {
         }, {
             volume: 0.25,
             loop: true,
             autoplay: true
         });
-        const sfx = new Sound("selection", "./sounds/vgmenuselect.wav", scene, function () {
+        const sfx = new Sound("selection", "./public/sounds/vgmenuselect.wav", scene, function () {
         });
 
         //--GUI--
@@ -163,7 +163,7 @@ class App {
         imageRect.thickness = 0;
         guiMenu.addControl(imageRect);
 
-        const startbg = new Image("startbg", "sprites/start.jpeg");
+        const startbg = new Image("startbg", "public/sprites/start.jpeg");
         imageRect.addControl(startbg);
 
         const title = new TextBlock("title", "SUMMER'S FESTIVAL");
@@ -257,7 +257,7 @@ class App {
             rect.addControl(stackPanel);
 
             //image
-            const image = new Image("rotate", "./sprites/rotate.png")
+            const image = new Image("rotate", "./public/sprites/rotate.png")
             image.width = 0.4;
             image.height = 0.6;
             image.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
@@ -318,13 +318,13 @@ class App {
     //loading sounds for the game scene
     private _loadSounds(scene: Scene): void {
 
-        this.game = new Sound("gameSong", "./sounds/Christmassynths.wav", scene, function () {
+        this.game = new Sound("gameSong", "./public/sounds/Christmassynths.wav", scene, function () {
         }, {
             loop:true,
             volume: 0.1
         });
 
-        this.end = new Sound("endSong", "./sounds/copycat(revised).mp3", scene, function () {
+        this.end = new Sound("endSong", "./public/sounds/copycat(revised).mp3", scene, function () {
         }, {
             volume: 0.25
         });
@@ -348,7 +348,7 @@ class App {
         scene.detachControl();
 
         //IBL (image based lighting) - to give scene an ambient light
-        const envHdri = CubeTexture.CreateFromPrefilteredData("textures/envtext.env", scene);
+        const envHdri = CubeTexture.CreateFromPrefilteredData("public/textures/envtext.env", scene);
         envHdri.name = "env";
         envHdri.gammaSpace = false;
         scene.environmentTexture = envHdri;
@@ -511,13 +511,13 @@ class App {
         camera.setTarget(Vector3.Zero());
 
         //--SOUNDS--
-        const start = new Sound("loseSong", "./sounds/Eye of the Storm.mp3", scene, function () {
+        const start = new Sound("loseSong", "./public/sounds/Eye of the Storm.mp3", scene, function () {
         }, {
             volume: 0.25,
             loop: true,
             autoplay: true
         });
-        const sfx = new Sound("selection", "./sounds/vgmenuselect.wav", scene, function () {
+        const sfx = new Sound("selection", "./public/sounds/vgmenuselect.wav", scene, function () {
         });
 
         //--GUI--
@@ -525,7 +525,7 @@ class App {
         guiMenu.idealHeight = 720;
 
         //background image
-        const image = new Image("lose", "sprites/lose.jpeg");
+        const image = new Image("lose", "public/sprites/lose.jpeg");
         image.autoScale = true;
         guiMenu.addControl(image);
 
@@ -619,7 +619,7 @@ class App {
             outer.rotationQuaternion = new Quaternion(0, 1, 0, 0); // rotate the player mesh 180 since we want to see the back of the player
             
             //--IMPORTING MESH--
-            return SceneLoader.ImportMeshAsync(null, "./models/", "player.glb", scene).then((result) =>{
+            return SceneLoader.ImportMeshAsync(null, "./public/models/", "player.glb", scene).then((result) =>{
                 const root = result.meshes[0];
                 //body is our actual player mesh
                 const body = root;
