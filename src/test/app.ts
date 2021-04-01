@@ -184,7 +184,7 @@ class App {
             e.position.x -= SPEED
             // 检测粒子是否和 plane 发生碰撞
             const collided = e.intersectsMesh(this.plane.mesh)
-            if (collided && e.name === 'sphere') {
+            if (collided) {
                 this.particles.splice(index, 1)
                 e.dispose()
                 if (e.name === 'sphere') {
