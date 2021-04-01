@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === 'production') {
 const copyConfig = {
     patterns: []
 }
-const pages = fs.readdirSync('./src')
-console.log("NODE_ENV:", process.env.NODE_ENV)
+const pages = fs.readdirSync('./src').filter(e => e !== '.DS_Store')
+console.log("pages:", pages)
 pages.forEach(page => {
     copyConfig.patterns.push({
         from: `src/${page}/public`,
