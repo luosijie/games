@@ -2,75 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Test</title>
-        <style>
-            html, body {
-                overflow: hidden;
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            #ui {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-            }
-            #ui>.score {
-                color: white;
-                font-weight: bold;
-                font-size: 1.2rem;
-                padding: 1rem;
-            }
-            #ui>.bottom {
-                padding: 2rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            #ui>.bottom>.tip {
-                font-size: .8rem;
-                color: white;
-            }
-            #play {
-                cursor: pointer;
-                position: absolute;
-                bottom: 6rem;
-                border: 4px solid white;
-                width: 6rem;
-                height: 6rem;
-                left: 50%;
-                margin-left: -3rem;
-                border-radius: 50%;
-                margin-bottom: 6rem;
-                text-align: center;
-                line-height: 6rem;
-                opacity: .5;
-                font-size: 1.8rem;
-                font-weight: bold;
-                color: white;
-            }
-        </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js" integrity="sha512-avLcnGxl5mqAX/wIKERdb1gFNkOLHh2W5JNCfJm5OugpEPBz7LNXJJ3BDjjwO00AxEY1MqdNjtEmiYhKC0ld7g==" crossorigin="anonymous"></script>
+        <title>Hanabi</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&family=Viga&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./public/styles.css"></link>
     </head>
-    <body>
-        <div id="ui">
-            <div class="score">
-                <span class="label">得分: </span>
-                <span id="score_value">0</span>
-            </div>
-            <div class="bottom">
-                <div class="tip">点击空格键 暂停/开始 游戏</div>
-            </div>
-        </div>
-        <div id="play">Play</div>
+    <body class="disable-selection">
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
     </body>
 </html>
