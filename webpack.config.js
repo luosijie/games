@@ -39,7 +39,7 @@ module.exports = {
     entry,
     output: {
         filename: '[name]/index-[hash].js',
-        path: path.resolve(__dirname, 'doc')
+        path: path.resolve(__dirname, 'docs')
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
@@ -48,7 +48,7 @@ module.exports = {
         host: '0.0.0.0',
         port: 8080,
         disableHostCheck: true,
-        contentBase: path.resolve(__dirname, 'doc'),
+        contentBase: path.resolve(__dirname, 'docs'),
         publicPath: '/',
         hot: true
     },
