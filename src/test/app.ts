@@ -2,8 +2,9 @@
 // import '@babylonjs/inspector'
 import '@babylonjs/loaders/glTF'
 
-import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder, SceneLoader, Matrix, Color4, ParticleSystem, CannonJSPlugin, ParticleHelper, SolidParticle, SolidParticleSystem, Scalar, Mesh, Color3, StandardMaterial, Camera } from '@babylonjs/core'
-// App class is our entire game application
+import { Engine, Scene, FreeCamera, Vector3, HemisphericLight, MeshBuilder, SceneLoader, Matrix, Color4, Mesh, Color3, StandardMaterial } from '@babylonjs/core'
+
+enum State { READY = 0, GAME = 1, PAUSE = 2 }
 class App {
     // General Entire Application
     private scene: Scene
@@ -13,13 +14,10 @@ class App {
     private light: HemisphericLight
     private plane: any
     private particles: Array<Mesh>
-
     private pointerPos: any
-    private windowHalfX: number
-    private windowHalfY: number
 
-    //Game State Related
-    public assets
+    private state: number
+    public score: number
 
     constructor() {
         this.init()
@@ -27,6 +25,8 @@ class App {
 
     // 初始化 babylon 场景(scene) and 引擎(engin)
     private async init(): Promise<void> {
+        this.state = State.READY
+        this.score = 0
         this.pointerPos = { x: 0, y: 0}
 
         this.canvas = this.createCanvas()
@@ -43,7 +43,8 @@ class App {
         this.plane = await this.loadPlane()
         this.plane.fly()
 
-        this.initParticles()
+        this.listenKeybord()
+        this.listenPlayButton()
 
         this.main()
 
@@ -63,6 +64,7 @@ class App {
         })
 
         this.scene.registerBeforeRender(() => {
+            if (this.state !== State.GAME) return
             this.updateParticles()
             this.updatePlane()
         })
@@ -97,6 +99,7 @@ class App {
         // 调整到与模型重合的位置
         container.bakeTransformIntoVertices(Matrix.Translation(0, 1.2, 0.8))
         container.rotation.y = -Math.PI / 2
+        container.position.x = 0.6
 
         // 加载飞机模型
         const glb = await SceneLoader.ImportMeshAsync(null, './public/', 'plane.glb', this.scene)
@@ -157,7 +160,7 @@ class App {
         const LIMIT = 90
         this.particles = []
         setInterval(() => {
-            if (this.particles.length > LIMIT) return
+            if (this.particles.length > LIMIT || this.state !== State.GAME) return
             // 创建粒子
             const particle = this.createParticle()
             // 随机放置粒子
@@ -181,10 +184,14 @@ class App {
             e.position.x -= SPEED
             // 检测粒子是否和 plane 发生碰撞
             const collided = e.intersectsMesh(this.plane.mesh)
-            if (collided) {
-                console.log('collided', 1)
+            if (collided && e.name === 'sphere') {
                 this.particles.splice(index, 1)
                 e.dispose()
+                if (e.name === 'sphere') {
+                    this.score++
+                    this.updateScore()
+                    console.log('collided')
+                }
             }
         })
     }
@@ -203,6 +210,33 @@ class App {
             this.plane.mesh.position.x += deltaX
             this.plane.mesh.position.y -= deltaY
         }
+    }
+
+    private updateScore(): void {
+        const dom: HTMLElement = document.querySelector('#score_value')
+        dom.innerText = String(this.score)
+    }
+
+    private toPlay(): void {
+        this.initParticles()
+        this.state = State.GAME
+    }
+
+    private listenKeybord(): void {
+        window.addEventListener('keydown', evt => {
+            if (evt.code === 'Space') {
+                this.state = this.state === State.GAME ? State.PAUSE : State.GAME
+            }
+        })
+    }
+
+    private listenPlayButton(): void {
+        const play: HTMLElement = document.querySelector('#play')
+        play.addEventListener('mousedown', evt => {
+            this.toPlay()
+            play.style.display = 'none'
+        })
+        
     }
 
     /** 三维世界坐标转化为屏幕坐标 */
