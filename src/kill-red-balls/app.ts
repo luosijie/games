@@ -104,7 +104,7 @@ class App {
         // 加载飞机模型
         const glb = await SceneLoader.ImportMeshAsync(null, './public/', 'plane.glb', this.scene)
         const root = glb.meshes[0]
-
+        console.log('glb', glb)
         // 绑定父子关系
         root.parent = container
 
@@ -224,6 +224,7 @@ class App {
 
     private listenKeybord(): void {
         window.addEventListener('keydown', evt => {
+            if (this.state === State.READY) return
             if (evt.code === 'Space') {
                 this.state = this.state === State.GAME ? State.PAUSE : State.GAME
             }
